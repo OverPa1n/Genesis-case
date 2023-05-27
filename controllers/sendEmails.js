@@ -18,7 +18,7 @@ module.exports = async function(req, res, next) {
             from: '"Nazar" <vasilishin08@gmail.com>',
             to: email,
             subject: 'BTC rate',
-            text: `current BTC to UAH exchange rate ${rate} UAH`
+            text: `current BTC to UAH exchange rate ${rate}`
         }
     })
     
