@@ -19,9 +19,9 @@ After success steps, you will be able to call the API which is running on **8890
 You can use Postman to test the api.
 
 ### API endpoints:
-1) **/rate** - Get the current BTC to UAH exchange rate
+1) **/rate** - Get the current BTC to UAH exchange rate.
 
-2) **/subscribe** - Add email that will receive current BTC to UAH exchange rate
-Require **email** parameter in application/x-www-form-urlencoded content type
+2) **/subscribe** - Add email that will receive current BTC to UAH exchange rate.
+   - Require **email** parameter in application/x-www-form-urlencoded content type.
 
-3) **/sendEmails** - Send email with current BTC to UAH exchange rate to all subscribed emails
+3) **/sendEmails** - Send email with current BTC to UAH exchange rate to all subscribed emails.
