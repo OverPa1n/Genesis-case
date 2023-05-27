@@ -17,7 +17,8 @@ module.exports = async function(req, res, next) {
         const coinInfo = await client.getTicker({coinId: COIN_ID});
         const {price_usd} = coinInfo;
         const hryvniaInDollarRate = await getDollarExchangeRateInHryvnia();
-        const result = (hryvniaInDollarRate * Number(price_usd)).toFixed(2);
+        const rate = (hryvniaInDollarRate * Number(price_usd)).toFixed(2);
+        const result = `${rate} UAH`;
 
         return res.json(result);
     } catch (e) {

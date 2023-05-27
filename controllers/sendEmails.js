@@ -18,13 +18,12 @@ module.exports = async function(req, res, next) {
             from: '"Nazar" <vasilishin08@gmail.com>',
             to: email,
             subject: 'BTC rate',
-            text: `current BTC to UAH exchange rate ${rate}`
+            text: `current BTC to UAH exchange rate ${rate} UAH`
         }
     })
     
     for (const message of messages) {
-        const info = await transporter.sendMail(message);
-        console.log('INFO', info);
+        await transporter.sendMail(message);
     }
 
     return res.send('Emails have been sent');

@@ -1,4 +1,5 @@
 const fs = require('fs');
+const filePath = 'emails.txt';
 
 module.exports = function(req, res, next) {
     const email = req.body?.email || '';
@@ -8,8 +9,7 @@ module.exports = function(req, res, next) {
     }
 
     try {
-        const data = fs.readFileSync('emails.txt', 'utf-8');
-        console.log('File content:', data);
+        const data = fs.readFileSync(filePath, 'utf-8');
 
         if (data.includes(email)) {
             return res.status(409).send(`The ${email} already exists in subscriptions`);
@@ -17,11 +17,16 @@ module.exports = function(req, res, next) {
 
         const updatedData = data ? `${data}, ${email}` : email;
 
-        fs.writeFileSync('emails.txt', updatedData, 'utf-8');
+        fs.writeFileSync(filePath, updatedData, 'utf-8');
 
         return res.send('E-mail added');
     } catch (err) {
-        console.error(`Error: ${err}`);
+        if (err.code === 'ENOENT') {
+            fs.writeFileSync(filePath, email, 'utf-8');
+
+            return res.send('E-mail added');
+        }
+
         return res.status(500).send(`Error handling email: ${err}`);
     }
 }

@@ -1,9 +1,9 @@
 const getRate = require('./getRate');
-const subscribeOnCurrentRate = require('./subscribeOnCurrentRate');
+const subscribe = require('./subscribe');
 const sendEmails = require('./sendEmails');
 
 module.exports = {
     getRate,
-    subscribeOnCurrentRate,
+    subscribe,
     sendEmails
 }
